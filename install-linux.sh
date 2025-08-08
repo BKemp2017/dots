@@ -17,10 +17,6 @@ curl -LO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCo
 unzip -o FiraCode.zip -d ~/.local/share/fonts >/dev/null
 fc-cache -fv >/dev/null
 
-echo "[+] Fetching Night Owl theme for Kitty..."
-mkdir -p ~/.config/kitty/themes
-curl -fsSL https://raw.githubusercontent.com/lukegazebrook/night-owl-kitty/master/nightowl.conf \
-  -o ~/.config/kitty/themes/nightowl.conf || true
 
 echo "[+] Symlinking dotfiles with stow..."
 cd "$HOME/dots"
@@ -30,3 +26,11 @@ echo "[+] Setting Zsh as default shell (log out/in to take effect)..."
 chsh -s "$(command -v zsh)" || true
 
 echo "[✔] Done. Restart Kitty or run: exec zsh"
+
+echo "[+] Installing Night Owl theme (kitty)…"
+mkdir -p ~/.config/kitty/themes
+cd /tmp
+rm -rf nightowl
+git clone https://github.com/Glazy/night-owl-kitty-theme.git nightowl
+cp nightowl/*.conf ~/.config/kitty/themes/nightowl.conf
+
