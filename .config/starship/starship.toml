@@ -1,0 +1,26 @@
+add_newline = true
+format = """
+$directory$git_branch$git_status$nodejs$elixir$erlang
+$character
+"""
+
+[directory]
+style = "bold cyan"
+
+[character]
+success_symbol = "[➜](bold green) "
+error_symbol = "[✗](bold red) "
+
+[git_branch]
+symbol = "� "
+style = "bold yellow"
+format = "[$symbol$branch]($style)"
+
+[git_status]
+style = "bold purple"
+format = "([$all_status$ahead_behind]($style))"
+ahead = "⇡"
+behind = "⇣"
+staged = "+"
+modified = "!"
+untracked = "?"
